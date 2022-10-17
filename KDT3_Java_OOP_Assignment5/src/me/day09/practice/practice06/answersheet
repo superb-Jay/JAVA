@@ -1,0 +1,5 @@
+InterfaceA ia = new InterfaceA() (O, X)  X
+AbstractClass a = new AbstractClass() (O, X) X
+A a = new B() (O, X) O
+InterfaceA ia = new ImplementClassB() (O, X) O
+A a = new B() (O, X) X

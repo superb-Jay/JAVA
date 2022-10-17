@@ -3,25 +3,39 @@ package me.day09.practice.practice01;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SmartTV extends NoneMobileElectronic{
+public class SmartTv extends NonMobileElectronic{
 
-    private int inch;
+    private double inch;
 
-    public SmartTV(String productNo, String modelName, Company companyName, String dateOfMade, AuthMethod[] authMethod, String address, int inch) {
+
+    public SmartTv (String address, double inch){
+        super(address);
+        this.inch = inch;
+    }
+    public SmartTv(String productNo, String modelName, Company companyName, String dateOfMade, AuthMethod[] authMethod, String address, double inch) {
         super(productNo, modelName, companyName, dateOfMade, authMethod, address);
+
+        this.inch = inch;
+    }
+
+    public double getInch() {
+        return inch;
+    }
+
+    public void setInch(double inch) {
         this.inch = inch;
     }
 
     @Override
     public String toString() {
-        return "SmartTV{" +
+        return "SmartTv{" +
                 "inch=" + inch +
                 ", address='" + address + '\'' +
                 ", productNo='" + productNo + '\'' +
                 ", modelName='" + modelName + '\'' +
+                ", companyName=" + companyName +
                 ", dateOfMade='" + dateOfMade + '\'' +
                 ", authMethod=" + Arrays.toString(authMethod) +
-                ", companyName=" + companyName +
                 '}';
     }
 
@@ -30,8 +44,8 @@ public class SmartTV extends NoneMobileElectronic{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        SmartTV smartTV = (SmartTV) o;
-        return inch == smartTV.inch;
+        SmartTv smartTv = (SmartTv) o;
+        return Double.compare(smartTv.inch, inch) == 0;
     }
 
     @Override
@@ -39,11 +53,14 @@ public class SmartTV extends NoneMobileElectronic{
         return Objects.hash(super.hashCode(), inch);
     }
 
-    public int getInch() {
-        return inch;
-    }
-
-    public void setInch(int inch) {
-        this.inch = inch;
+    @Override
+    public void showElectronicInfo() {
+        System.out.println("제품번호 :" + productNo);
+        System.out.println("모델명 : " + modelName);
+        System.out.println("회사명 : " + companyName);
+        System.out.println("만든날짜 : " + dateOfMade);
+        System.out.println("인증방식 : " + Arrays.toString(authMethod));
+        System.out.println("주소 : " +address);
+        System.out.println("인치 : " + inch + "인치");
     }
 }

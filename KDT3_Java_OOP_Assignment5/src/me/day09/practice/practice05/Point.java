@@ -2,7 +2,7 @@ package me.day09.practice.practice05;
 
 import java.util.Objects;
 
-public class Point {
+public class Point  {
     private int x;
     private int y;
 

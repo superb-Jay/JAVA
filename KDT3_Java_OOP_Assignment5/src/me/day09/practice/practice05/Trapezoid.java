@@ -36,6 +36,22 @@ public class Trapezoid extends Shape {
     }
 
     @Override
+    public void calculateArea() {
+        double upperSide = Math.sqrt(Math.pow((lines[0].getEnd().getX()-lines[0].getStart().getX()),2)
+                +Math.pow((lines[0].getEnd().getY()-lines[0].getStart().getY()),2));
+
+        double lowerSide = Math.sqrt(Math.pow((lines[1].getEnd().getX()-lines[1].getStart().getX()),2)
+                +Math.pow((lines[1].getEnd().getY()-lines[1].getStart().getY()),2));
+
+        double trapezoidArea = 0.5*(upperSide+lowerSide)*getHeight(lines[0],lines[1]);
+        System.out.println("사다리꼴의 넓이 : " + trapezoidArea);
+
+    }
+    public int getHeight(Line x,Line y){
+        return (x.getStart().getY() - y.getStart().getY());
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -59,4 +75,3 @@ public class Trapezoid extends Shape {
                 '}';
     }
 }
-

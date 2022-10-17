@@ -3,71 +3,28 @@ package me.day09.practice.practice01;
 import java.util.Objects;
 
 public class Member {
-    protected String serialNo; // auto - generated
-    protected String memberID;
-    protected String memberPassword;
-    protected String memberPhoneNumber;
-    protected String memberEmail;
-    protected String memberBirthDate;
 
-    private static int count = 0;
+    private static int num;
+    private int serialNo;
+    private String memberID;
+    private String password;
+    private String memberPhoneNumber;
+    private String memberEmail;
+    private String memberBirthdate;
 
-    public Member() {
-        generateKey();
-    }
+    public Member(String memberID ,String password, String memberPhoneNumber, String memberEmail, String memberBirthdate){
 
-    public Member(String memberID, String memberPassword, String memberEmail) {
         this.memberID = memberID;
-        this.memberPassword = memberPassword;
-        this.memberEmail = memberEmail;
-        generateKey();
-    }
-
-    public Member(String memberID, String memberPassword, String memberPhoneNumber, String memberEmail, String memberBirthDate) {
-        this.memberID = memberID;
-        this.memberPassword = memberPassword;
+        this.password = password;
         this.memberPhoneNumber = memberPhoneNumber;
         this.memberEmail = memberEmail;
-        this.memberBirthDate = memberBirthDate;
-        generateKey();
+        this.memberBirthdate = memberBirthdate;
+        num++;
+        serialNo = num;
     }
 
-    private void generateKey() {
-        count++;
-        serialNo = String.format("%05d",count);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Member member = (Member) o;
-        return serialNo == member.serialNo && memberID.equals(member.memberID) && memberPassword.equals(member.memberPassword) && memberPhoneNumber.equals(member.memberPhoneNumber) && memberEmail.equals(member.memberEmail) && memberBirthDate.equals(member.memberBirthDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(serialNo, memberID, memberPassword, memberPhoneNumber, memberEmail, memberBirthDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "serialNo=" + serialNo +
-                ", memberID='" + memberID + '\'' +
-                ", memberPassword='" + memberPassword + '\'' +
-                ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
-                ", memberEmail='" + memberEmail + '\'' +
-                ", memberBirthDate='" + memberBirthDate + '\'' +
-                '}';
-    }
-
-    public String getSerialNo() {
+    public int getSerialNo() {
         return serialNo;
-    }
-
-    private void setSerialNo(String serialNo) {
-        this.serialNo = serialNo;
     }
 
     public String getMemberID() {
@@ -78,12 +35,12 @@ public class Member {
         this.memberID = memberID;
     }
 
-    public String getMemberPassword() {
-        return memberPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMemberPassword(String memberPassword) {
-        this.memberPassword = memberPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getMemberPhoneNumber() {
@@ -102,11 +59,74 @@ public class Member {
         this.memberEmail = memberEmail;
     }
 
-    public String getMemberBirthDate() {
-        return memberBirthDate;
+    public String getMemberBirthdate() {
+        return memberBirthdate;
     }
 
-    public void setMemberBirthDate(String memberBirthDate) {
-        this.memberBirthDate = memberBirthDate;
+    public void setMemberBirthdate(String memberBirthdate) {
+        this.memberBirthdate = memberBirthdate;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "serialNo=" + serialNo +
+                ", memberID='" + memberID + '\'' +
+                ", password='" + password + '\'' +
+                ", memberPhoneNumber='" + memberPhoneNumber + '\'' +
+                ", memberEmail='" + memberEmail + '\'' +
+                ", memberBirthdate='" + memberBirthdate + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return serialNo == member.serialNo && memberID.equals(member.memberID) && password.equals(member.password) && memberPhoneNumber.equals(member.memberPhoneNumber) && memberEmail.equals(member.memberEmail) && memberBirthdate.equals(member.memberBirthdate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serialNo, memberID, password, memberPhoneNumber, memberEmail, memberBirthdate);
+    }
+
+    public String  getNewPhoneNumber(String[] candidates){  //실습 4번
+        int count = 0;
+        for(int i = 0 ;i<candidates.length; i++){
+            count = 0;
+            if(candidates[i].substring(4,11).equals(memberPhoneNumber.substring(4,11))){ //뒤에 2개만 다르먼 바꿈
+                this.memberPhoneNumber = candidates[i];
+                return candidates[i];
+            } else if (candidates[i].substring(4,8).equals(memberPhoneNumber.substring(4,8))) { //가운데 4개가 같음
+                this.memberPhoneNumber = candidates[i];
+                return candidates[i];
+            } else if (candidates[i].substring(9,13).equals(memberPhoneNumber.substring(9,13))) { // 뒤에 4개가 같음
+                this.memberPhoneNumber = candidates[i];
+                return candidates[i];
+            }else{
+                for(int j = 0; j < memberPhoneNumber.length(); j++){  // 숫자 3개만 같은데 위치도 같아야 함
+                    if(candidates[i].charAt(j) == memberPhoneNumber.charAt(j)){
+                        count++;
+                    }
+                }
+                if(count == 8){
+                    this.memberPhoneNumber = candidates[i];
+                    return candidates[i];
+                }
+            }
+        }
+
+        return memberPhoneNumber;
+    }
+
+    public void showMemberInfo(){
+        System.out.println("회원 일련번호 : " + serialNo);
+        System.out.println("회원 ID : " + memberID);
+        System.out.println("비밀번호 : " + password);
+        System.out.println("회원 전화번호 : " + memberPhoneNumber);
+        System.out.println("회원 이메일 : " + memberEmail);
+        System.out.println("회원 생년월일 : " + memberBirthdate);
     }
 }

@@ -2,7 +2,7 @@ package me.day09.practice.practice05;
 
 import java.util.Objects;
 
-public class Triangle extends Shape {
+public class Triangle extends Shape implements GeometricController {
     private int base;
     private int height;
 
@@ -42,6 +42,11 @@ public class Triangle extends Shape {
     }
 
     @Override
+    public void calculateArea() { //삼각형 넓이 구하는 공식 재정의
+        System.out.println("삼각형의 넓이 : " + getBase()*getHeight()*0.5);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -61,5 +66,19 @@ public class Triangle extends Shape {
                 ", height=" + height +
                 ", centerPoint=" + centerPoint +
                 '}';
+    }
+
+    @Override
+    public void translate(int dx, int dy) { // 중점이동
+
+        centerPoint.setX(centerPoint.getX()+dx);
+        centerPoint.setY(centerPoint.getY()+dy);
+    }
+
+    @Override
+    public void scale(int offset) { // 스케일링
+
+        setBase(getBase()+offset);
+        setHeight(getHeight()+offset);
     }
 }
