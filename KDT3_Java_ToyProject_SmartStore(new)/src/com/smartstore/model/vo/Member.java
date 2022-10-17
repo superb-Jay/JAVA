@@ -29,7 +29,7 @@ public class Member {
         return "Member{" +
                 "customerNumber=" + customerNumber +
                 ", customerName='" + customerName + '\'' +
-                ", getCustomerId='" + customerId + '\'' +
+                ", CustomerId='" + customerId + '\'' +
                 ", spentTime=" + spentTime +
                 ", totalPay=" + totalPay +
                 '}';
