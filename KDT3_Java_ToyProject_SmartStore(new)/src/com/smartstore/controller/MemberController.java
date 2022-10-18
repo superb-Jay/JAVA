@@ -47,7 +47,10 @@ public class MemberController {
         int pay = 0;
 
 
+
+
         while (run) {
+
 
             if (count != size) {
 
@@ -61,7 +64,6 @@ public class MemberController {
                 System.out.println("==============================");
                 System.out.println("choose One: ");
                 int menuNum = in.nextInt();
-
 
                 switch (menuNum) {
                     case 1:
@@ -83,11 +85,14 @@ public class MemberController {
                     case 5:
                         if (memberCount+1 == mem.length) {
                             mem = addMem(new Member(name, id, time, pay));
-                            count++;
                         } else {
                             insertMember(new Member(name, id, time, pay));
-                            count++;
                         }
+                        count++;
+                        name = null;
+                        id = null;
+                        time = 0;
+                        pay = 0;
                         break;
 
                     default:
@@ -187,14 +192,25 @@ public class MemberController {
     }
 
     public void deleteCustomerData() {
-        viewCustomerData();
-        String str;
-        do {
-            System.out.println("Which customer ( 1 ~ 0 )?");
-            str = in.next();
-        } while (!(Pattern.matches(num, str)));
-        int serialNum = Integer.parseInt(str);
+        int serialNum = 0;
         int deleteIndex = 0;
+        boolean run = true;
+        while(run) {
+            viewCustomerData();
+            String str;
+            do {
+                System.out.println("Which customer ( 1 ~ 0 )?");
+                str = in.next();
+            } while (!(Pattern.matches(num, str)));
+            serialNum = Integer.parseInt(str);
+
+            if (serialNum > memberCount) {
+                System.out.println("There are no eligible customers.");
+            }else{
+                run = false;
+            }
+        }
+
         for (int i = 0; i < memberCount; i++) {
             if (mem[i].getCustomerNumber() == serialNum) {
                 deleteIndex = i;

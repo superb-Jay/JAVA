@@ -4,27 +4,31 @@ import com.smartstore.controller.GroupController;
 import com.smartstore.controller.MemberController;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MemberMenu {
 
     Scanner in = new Scanner(System.in);
-
+    final String num = "^[0-9]+$"; // 숫자만
     MemberController mc = new MemberController();
     GroupController gc = new GroupController();
 
     public void mainMenu() {
-        int menuNum = 0;
-        boolean run = true;
 
-        while (run) {
-            System.out.println("==========================");
-            System.out.println("1. Classification Parameter");
-            System.out.println("2. Customer Data");
-            System.out.println("3. Summary");
-            System.out.println("4. Quit");
-            System.out.println("==========================");
-            System.out.println("choose One: ");
-            menuNum = in.nextInt();
+        String str;
+
+        while (true) {
+            do {
+                System.out.println("==========================");
+                System.out.println("1. Classification Parameter");
+                System.out.println("2. Customer Data");
+                System.out.println("3. Summary");
+                System.out.println("4. Quit");
+                System.out.println("==========================");
+                System.out.println("choose One: ");
+                str = in.next();
+            } while (!(Pattern.matches(num, str)));
+            int menuNum = Integer.parseInt(str);
 
             switch (menuNum) {
                 case 1:
@@ -47,17 +51,21 @@ public class MemberMenu {
     }
 
     public void classificationParameter() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
-            System.out.println(" 1. Set Parameter");
-            System.out.println(" 2. View Parameter");
-            System.out.println(" 3. Update Parameter");
-            System.out.println(" 4. Back");
-            System.out.println("==============================");
-            System.out.println("choose One: ");
-            menuNum = in.nextInt();
+
+        String str;
+
+        while (true) {
+            do {
+                System.out.println("==============================");
+                System.out.println(" 1. Set Parameter");
+                System.out.println(" 2. View Parameter");
+                System.out.println(" 3. Update Parameter");
+                System.out.println(" 4. Back");
+                System.out.println("==============================");
+                System.out.println("choose One: ");
+                str = in.next();
+            } while (!(Pattern.matches(num, str)));
+            int menuNum = Integer.parseInt(str);
 
             switch (menuNum) {
                 case 1:
@@ -78,18 +86,21 @@ public class MemberMenu {
         }
     }
     public void customerData() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
-            System.out.println(" 1. Add Customer Data");
-            System.out.println(" 2. View Customer Data");
-            System.out.println(" 3. Update Customer Data");
-            System.out.println(" 4. Delete Customer Data");
-            System.out.println(" 5. Back");
-            System.out.println("==============================");
-            System.out.println("choose One: ");
-            menuNum = in.nextInt();
+        String str;
+
+        while (true) {
+            do {
+                System.out.println("==============================");
+                System.out.println(" 1. Add Customer Data");
+                System.out.println(" 2. View Customer Data");
+                System.out.println(" 3. Update Customer Data");
+                System.out.println(" 4. Delete Customer Data");
+                System.out.println(" 5. Back");
+                System.out.println("==============================");
+                System.out.println("choose One: ");
+                str = in.next();
+            } while (!(Pattern.matches(num, str)));
+            int menuNum = Integer.parseInt(str);
 
             switch (menuNum) {
                 case 1:
@@ -99,10 +110,19 @@ public class MemberMenu {
                     mc.viewCustomerData();
                     break;
                 case 3:
-                    mc.updateCustomerData();
+                    if(MemberController.getMemberCount() != 0) {
+                        mc.updateCustomerData();
+                    }else{
+                        System.out.println("No customer.");
+                    }
                     break;
                 case 4:
-                    mc.deleteCustomerData();
+                    if(MemberController.getMemberCount() != 0) {
+                        mc.deleteCustomerData();
+                    }else{
+                        System.out.println("No customer.");
+                    }
+                    break;
                 case 5:
                     return;
                 default:
@@ -113,18 +133,20 @@ public class MemberMenu {
     }
 
     public void summary() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
-            System.out.println(" 1. Summary");
-            System.out.println(" 2. Summary (Sorted By Name)");
-            System.out.println(" 3. Summary (Sorted By Spent Time)");
-            System.out.println(" 4. Summary (Sorted By Total Payment)");
-            System.out.println(" 5. Back");
-            System.out.println("==============================");
-            System.out.println("choose One: ");
-            menuNum = in.nextInt();
+        String str;
+
+        while (true) {
+            do {
+                System.out.println("==============================");
+                System.out.println(" 1. Summary");
+                System.out.println(" 2. Summary (Sorted By Name)");
+                System.out.println(" 3. Summary (Sorted By Spent Time)");
+                System.out.println(" 4. Summary (Sorted By Total Payment)");
+                System.out.println(" 5. Back");
+                System.out.println("==============================");
+                str = in.next();
+            } while (!(Pattern.matches(num, str)));
+            int menuNum = Integer.parseInt(str);
 
             switch (menuNum) {
                 case 1:
