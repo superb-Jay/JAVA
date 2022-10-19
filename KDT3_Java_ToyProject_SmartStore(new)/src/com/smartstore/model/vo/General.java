@@ -4,8 +4,8 @@ import java.sql.Time;
 
 public class General {
 
-    int generalSpentTime = 0 ;
-    int generalTotalPay = 0 ;
+    int generalSpentTime ;
+    int generalTotalPay ;
 
     public int getGeneralSpentTime() {
         return generalSpentTime;

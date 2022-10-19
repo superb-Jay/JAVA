@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf45e676-3e83-42d6-a0b4-1ed85697f23e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smartStore.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/controller/GroupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/controller/MemberController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/model/vo/General.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/model/vo/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/model/vo/Vip.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/model/vo/Vvip.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/run/Run.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/smartstore/view/MemberMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/controller/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/model/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/model/vo/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +25,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/com/smartstore/controller/GroupController.java" root0="FORCE_HIGHLIGHTING" />
@@ -56,10 +46,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/WorkSpace/JAVA/smartStore",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/WorkSpace/JAVA/KDT3_Java_ToyProject_SmartStore(new)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.rainbow.brackets"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,8 +87,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665330149309</updated>
+      <workItem from="1666095378651" duration="33000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

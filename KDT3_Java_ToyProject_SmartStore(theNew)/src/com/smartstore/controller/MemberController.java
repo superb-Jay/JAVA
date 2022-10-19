@@ -11,23 +11,12 @@ import java.util.regex.Pattern;
 public class MemberController {
 
     Scanner in = new Scanner(System.in);
-    final String eng = "/^[a-zA-Z]*$/"; // 영어만
+    final String eng = "^[a-zA-Z]*$"; // 영어만
     final String num = "^[0-9]+$"; // 숫자만
     boolean run = true;
-    private static Member[] mem = new Member[1];
+    private Member[] mem = new Member[1];
     private static int memberCount = 0;
 
-    public static int getMemberCount() {
-        return memberCount;
-    }
-
-    public static Member[] getInstance() {
-        if (mem == null) {
-            return new Member[1];
-        } else {
-            return mem;
-        }
-    }
 
     public void addCustomerData() {
         String str;
@@ -46,11 +35,8 @@ public class MemberController {
         int time = 0;
         int pay = 0;
 
-
         while (run) {
-
             if (count != size) {
-
                 System.out.println("====== Customer " + (count + 1) + " Info. ======");
                 System.out.println("==============================");
                 System.out.println(" 1. Customer Name");
@@ -88,6 +74,10 @@ public class MemberController {
                             insertMember(new Member(name, id, time, pay));
                             count++;
                         }
+                        name = null;
+                        id = null;
+                        time = 0;
+                        pay = 0;
                         break;
 
                     default:
@@ -207,6 +197,14 @@ public class MemberController {
         memberCount--;
         System.out.println("Customer Data Deleted Successfully !");
         viewCustomerData();
+    }
+
+    public static int getMemberCount() {
+        return memberCount;
+    }
+
+    public  Member[] getMem() {
+        return mem;
     }
 
     @Override

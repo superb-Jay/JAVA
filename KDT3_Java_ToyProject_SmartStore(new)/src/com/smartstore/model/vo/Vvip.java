@@ -2,8 +2,8 @@ package com.smartstore.model.vo;
 
 public class Vvip {
 
-    int vVipSpentTime = 0;
-    int vVipTotalPay = 0;
+    int vVipSpentTime;
+    int vVipTotalPay;
 
     public int getvVipSpentTime() {
         return vVipSpentTime;

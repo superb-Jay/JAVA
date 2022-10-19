@@ -5,10 +5,8 @@ import com.smartstore.controller.MemberController;
 
 import java.util.Scanner;
 
-public class MemberMenu {
-
+public class MainMenu {
     Scanner in = new Scanner(System.in);
-
     MemberController mc = new MemberController();
     GroupController gc = new GroupController();
 
@@ -128,17 +126,17 @@ public class MemberMenu {
 
             switch (menuNum) {
                 case 1:
-                    gc.summaryAll();
+//                    gc.summaryAll(mc.getMem());
                     break;
                 case 2:
-                    gc.summarySortName();
-                    break;
-                case 3:
-                    gc.summarySortTime();
-                    break;
-                case 4:
-                    gc.summarySortPayment();
-                    break;
+//                    gc.summarySortName();
+//                    break;
+//                case 3:
+//                    gc.summarySortTime();
+//                    break;
+//                case 4:
+//                    gc.summarySortPayment();
+//                    break;
                 case 5:
                     return;
                 default:

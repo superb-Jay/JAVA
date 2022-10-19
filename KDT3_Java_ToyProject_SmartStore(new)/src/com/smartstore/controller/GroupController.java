@@ -250,7 +250,7 @@ public class GroupController {
                 }
             }
         } else {
-            System.arraycopy(MemberController.getInstance(), 0, olistMember, 0, MemberController.getMemberCount());
+            System.arraycopy(MemberController.getInstance(),0,olistMember,0,MemberController.getMemberCount());
             oCount = olistMember.length;
         }
         System.out.println("==============================");
@@ -385,7 +385,7 @@ public class GroupController {
                 }
             }
         } else {
-            System.arraycopy(MemberController.getInstance(), 0, olistMember, 0, MemberController.getMemberCount());
+            System.arraycopy(MemberController.getInstance(),0,olistMember,0,MemberController.getInstance().length);
             oCount = olistMember.length;
         }
         if (menu.equals("ASCENDING")) {
@@ -398,8 +398,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < oCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (olistMember[i].getCustormerName() == null || olistMember[j].getCustormerName() == null) {
-                        } else if (olistMember[i].getCustormerName().compareTo(olistMember[j].getCustormerName()) < 0) {
+                        if (olistMember[i].getCustormerName().compareTo(olistMember[j].getCustormerName()) < 0) {
                             Member temp = olistMember[j];
                             olistMember[j] = olistMember[i];
                             olistMember[i] = temp;
@@ -419,8 +418,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < gCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (glistMember[i].getCustormerName() == null || glistMember[j].getCustormerName() == null) {
-                        } else if (glistMember[i].getCustormerName().compareTo(glistMember[j].getCustormerName()) < 0) {
+                        if (glistMember[i].getCustormerName().compareTo(glistMember[j].getCustormerName()) < 0) {
                             Member temp = glistMember[j];
                             glistMember[j] = glistMember[i];
                             glistMember[i] = temp;
@@ -440,8 +438,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < vCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (vlistMember[i].getCustormerName() == null || vlistMember[j].getCustormerName() == null) {
-                        } else if (vlistMember[i].getCustormerName().compareTo(vlistMember[j].getCustormerName()) < 0) {
+                        if (vlistMember[i].getCustormerName().compareTo(vlistMember[j].getCustormerName()) < 0) {
                             Member temp = vlistMember[j];
                             vlistMember[j] = vlistMember[i];
                             vlistMember[i] = temp;
@@ -461,8 +458,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < vvCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (vVlistMember[i].getCustormerName() == null || vVlistMember[j].getCustormerName() == null) {
-                        } else if (vVlistMember[i].getCustormerName().compareTo(vVlistMember[j].getCustormerName()) < 0) {
+                        if (vVlistMember[i].getCustormerName().compareTo(vVlistMember[i].getCustormerName()) < 0) {
                             Member temp = vVlistMember[j];
                             vVlistMember[j] = vVlistMember[i];
                             vVlistMember[i] = temp;
@@ -482,8 +478,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < oCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (olistMember[i].getCustormerName() == null || olistMember[j].getCustormerName() == null) {
-                        } else if (olistMember[i].getCustormerName().compareTo(olistMember[j].getCustormerName()) > 0) {
+                        if (olistMember[i].getCustormerName().compareTo(olistMember[j].getCustormerName()) > 0) {
                             Member temp = olistMember[j];
                             olistMember[j] = olistMember[i];
                             olistMember[i] = temp;
@@ -503,8 +498,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < gCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (glistMember[i].getCustormerName() == null || glistMember[j].getCustormerName() == null) {
-                        } else if (glistMember[i].getCustormerName().compareTo(glistMember[j].getCustormerName()) > 0) {
+                        if (glistMember[i].getCustormerName().compareTo(glistMember[j].getCustormerName()) > 0) {
                             Member temp = glistMember[j];
                             glistMember[j] = glistMember[i];
                             glistMember[i] = temp;
@@ -524,8 +518,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < vCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (vlistMember[i].getCustormerName() == null || vlistMember[j].getCustormerName() == null) {
-                        } else if (vlistMember[i].getCustormerName().compareTo(vlistMember[j].getCustormerName()) > 0) {
+                        if (vlistMember[i].getCustormerName().compareTo(vlistMember[j].getCustormerName()) > 0) {
                             Member temp = vlistMember[j];
                             vlistMember[j] = vlistMember[i];
                             vlistMember[i] = temp;
@@ -545,8 +538,7 @@ public class GroupController {
             } else {
                 for (int i = 0; i < vvCount; i++) {
                     for (int j = 0; j < i; j++) {
-                        if (vVlistMember[i].getCustormerName() == null || vVlistMember[j].getCustormerName() == null) {
-                        } else if (vVlistMember[i].getCustormerName().compareTo(vVlistMember[j].getCustormerName()) > 0) {
+                        if (vVlistMember[i].getCustormerName().compareTo(vVlistMember[j].getCustormerName()) > 0) {
                             Member temp = vVlistMember[j];
                             vVlistMember[j] = vVlistMember[i];
                             vVlistMember[i] = temp;
@@ -592,7 +584,7 @@ public class GroupController {
                 }
             }
         } else {
-            System.arraycopy(MemberController.getInstance(), 0, olistMember, 0, MemberController.getMemberCount());
+            System.arraycopy(MemberController.getInstance(),0,olistMember,0,MemberController.getInstance().length);
             oCount = olistMember.length;
         }
         if (menu.equals("ASCENDING")) {
@@ -792,7 +784,7 @@ public class GroupController {
                 }
             }
         } else {
-            System.arraycopy(MemberController.getInstance(), 0, olistMember, 0, MemberController.getInstance().length);
+            System.arraycopy(MemberController.getInstance(),0,olistMember,0,MemberController.getInstance().length);
             oCount = olistMember.length;
         }
         if (menu.equals("ASCENDING")) {

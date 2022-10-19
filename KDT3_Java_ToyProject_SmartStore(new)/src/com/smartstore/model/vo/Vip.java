@@ -2,8 +2,8 @@ package com.smartstore.model.vo;
 
 public class Vip {
 
-    int vipSpentTime = 0;
-    int vipTotalPay = 0;
+    int vipSpentTime;
+    int vipTotalPay;
 
     public int getVipSpentTime() {
         return vipSpentTime;
