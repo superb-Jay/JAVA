@@ -12,14 +12,21 @@ public class GroupController {
     Parameter[] parameters = new Parameter[Column.values().length];
 
 
-    public void setParameter() {
+    public String parameterMenu() {
         String menu;
         do {
             System.out.println("** Press 'end', if you want to exit! **");
             System.out.println("Which group (GENERAL, VIP, VVIP)?");
             menu = in.next();
-        } while (!(menu.toUpperCase().equals("GENERAL")||menu.toUpperCase().equals("VIP")||menu.toUpperCase().equals("VVIP")));
+        } while (!(menu.toUpperCase().equals("GENERAL")||menu.toUpperCase().equals("VIP")||menu.toUpperCase().equals("VVIP")||menu.toUpperCase().equals("END")));
         menu = menu.toUpperCase();
+
+        return menu;
+    }
+
+    public void setParameter() {
+        String menu = parameterMenu();
+        if(menu.equals("END")) {return;}
 
         int num = Column.valueOf(menu).getNum();
 
@@ -37,31 +44,18 @@ public class GroupController {
 
 
     public void viewParameter() {
-        String str;
-        do {
-            System.out.println("** Press 'end', if you want to exit! **");
-            System.out.println("Which group (GENERAL, VIP, VVIP)?");
-            str = in.next();
-        } while (str.equals("GENERAL")||str.equals("VIP")||str.equals("VVIP"));
-
-        String menu = str.toUpperCase();
+        String menu = parameterMenu();
+        if(menu.equals("END")) {return;}
         int num = Column.valueOf(menu).getNum();
         System.out.println(parameters[num].prameterShowInfo(num));
-
     }
 
     public void updateParameter() {
-        String str;
-        do {
-            System.out.println("** Press 'end', if you want to exit! **");
-            System.out.println("Which group (GENERAL, VIP, VVIP)?");
-            str = in.next();
-        } while (str.equals("GENERAL")||str.equals("VIP")||str.equals("VVIP"));
-
-        String menu = str.toUpperCase();
+        String menu = parameterMenu();
+        if(menu.equals("END")) {return;}
         int num = Column.valueOf(menu).getNum();
 
-        if (parameters[num].getSpentTime() == 0 && parameters[num].getTotalPay() == 0) {
+        if (parameters[num]==null) {
             System.out.println("No parameter. Set the parameter first.");
         } else {
             insertPrameter(num);
