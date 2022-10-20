@@ -2,19 +2,22 @@ package com.smartstore.view;
 
 import com.smartstore.controller.GroupController;
 import com.smartstore.controller.MemberController;
+import com.smartstore.controller.Summary;
+import com.smartstore.run.Run;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MainMenu {
     Scanner in = new Scanner(System.in);
     MemberController mc = new MemberController();
+    Summary s = new Summary();
     GroupController gc = new GroupController();
 
     public void mainMenu() {
-        int menuNum = 0;
-        boolean run = true;
 
-        while (run) {
+        while (true) {
+
             System.out.println("==========================");
             System.out.println("1. Classification Parameter");
             System.out.println("2. Customer Data");
@@ -22,7 +25,8 @@ public class MainMenu {
             System.out.println("4. Quit");
             System.out.println("==========================");
             System.out.println("choose One: ");
-            menuNum = in.nextInt();
+
+            int menuNum = inputValidation(in.next());
 
             switch (menuNum) {
                 case 1:
@@ -35,27 +39,28 @@ public class MainMenu {
                     summary();
                     break;
                 case 4:
-                    return;
+                    System.out.println("Program Finished.");
+                    System.exit(0);
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
-
             }
         }
     }
 
     public void classificationParameter() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
+
+        while (true) {
+
+            System.out.println("==========================");
             System.out.println(" 1. Set Parameter");
             System.out.println(" 2. View Parameter");
             System.out.println(" 3. Update Parameter");
             System.out.println(" 4. Back");
-            System.out.println("==============================");
+            System.out.println("==========================");
             System.out.println("choose One: ");
-            menuNum = in.nextInt();
+
+            int menuNum = inputValidation(in.next());
 
             switch (menuNum) {
                 case 1:
@@ -68,26 +73,28 @@ public class MainMenu {
                     gc.updateParameter();
                     break;
                 case 4:
-                    return;
+                    mainMenu();
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
             }
         }
     }
+
     public void customerData() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
+
+        while (true) {
+
+            System.out.println("==========================");
             System.out.println(" 1. Add Customer Data");
             System.out.println(" 2. View Customer Data");
             System.out.println(" 3. Update Customer Data");
             System.out.println(" 4. Delete Customer Data");
             System.out.println(" 5. Back");
-            System.out.println("==============================");
+            System.out.println("==========================");
             System.out.println("choose One: ");
-            menuNum = in.nextInt();
+
+            int menuNum = inputValidation(in.next());
 
             switch (menuNum) {
                 case 1:
@@ -102,7 +109,7 @@ public class MainMenu {
                 case 4:
                     mc.deleteCustomerData();
                 case 5:
-                    return;
+                    mainMenu();
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
@@ -111,24 +118,24 @@ public class MainMenu {
     }
 
     public void summary() {
-        boolean run = true;
-        int menuNum = 0;
-        while (run) {
-            System.out.println("==============================");
+        while (true) {
+
+            System.out.println("==========================");
             System.out.println(" 1. Summary");
             System.out.println(" 2. Summary (Sorted By Name)");
             System.out.println(" 3. Summary (Sorted By Spent Time)");
             System.out.println(" 4. Summary (Sorted By Total Payment)");
             System.out.println(" 5. Back");
-            System.out.println("==============================");
+            System.out.println("==========================");
             System.out.println("choose One: ");
-            menuNum = in.nextInt();
+
+            int menuNum = inputValidation(in.next());
 
             switch (menuNum) {
                 case 1:
-//                    gc.summaryAll(mc.getMem());
+                    s.summaryAll(mc.getMem(),gc.getParameters());
                     break;
-                case 2:
+//                case 2:
 //                    gc.summarySortName();
 //                    break;
 //                case 3:
@@ -138,12 +145,24 @@ public class MainMenu {
 //                    gc.summarySortPayment();
 //                    break;
                 case 5:
-                    return;
+                    mainMenu();
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
             }
         }
+    }
+
+    public static int inputValidation(String input) {
+        String str = "";
+        int num = 0;
+        try {
+            str = input;
+            num = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+
+        }
+        return num;
     }
 }
 

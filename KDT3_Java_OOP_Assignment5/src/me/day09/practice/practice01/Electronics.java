@@ -90,9 +90,7 @@ public class Electronics {
 //        System.out.println(Arrays.toString(s.getElectronics(sIdx)));
 //        System.out.println(Arrays.toString(l.getElectronics(lIdx)));
 //        System.out.println(Arrays.toString(a.getElectronics(aIdx)));
-        return  new Electronics[] {
-                new Electronics(s.getElectronics(sIdx)),
-                new Electronics(l.getElectronics(lIdx)),
+        return  new Electronics[] {new Electronics(s.getElectronics(sIdx)), new Electronics(l.getElectronics(lIdx)),
                 new Electronics(a.getElectronics(aIdx))};
     }
 }

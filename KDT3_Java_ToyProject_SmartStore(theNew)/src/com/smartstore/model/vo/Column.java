@@ -1,7 +1,7 @@
 package com.smartstore.model.vo;
 
 public enum Column {
-    GENERAL(0,"GENERAL"), VIP(1,"VIP"), VVIP(2,"VVIP"), OTHERS(3,"OTHERES");
+    OTHERS(0,"OTHERES") ,GENERAL(1,"GENERAL"), VIP(2,"VIP"), VVIP(3,"VVIP");
 
     private int num;
     private String name;

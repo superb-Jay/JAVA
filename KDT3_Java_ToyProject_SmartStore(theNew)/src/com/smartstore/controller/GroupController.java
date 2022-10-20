@@ -3,34 +3,34 @@ package com.smartstore.controller;
 import com.smartstore.model.vo.Column;
 import com.smartstore.model.vo.Member;
 import com.smartstore.model.vo.Parameter;
+import com.smartstore.view.MainMenu;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class GroupController {
     Scanner in = new Scanner(System.in);
     Parameter[] parameters = new Parameter[Column.values().length];
-
 
     public String parameterMenu() {
         String menu;
         do {
             System.out.println("** Press 'end', if you want to exit! **");
             System.out.println("Which group (GENERAL, VIP, VVIP)?");
-            menu = in.next();
-        } while (!(menu.toUpperCase().equals("GENERAL")||menu.toUpperCase().equals("VIP")||menu.toUpperCase().equals("VVIP")||menu.toUpperCase().equals("END")));
-        menu = menu.toUpperCase();
+            menu = in.next().toUpperCase();
+        } while (!(menu.equals("GENERAL") || menu.equals("VIP") || menu.equals("VVIP") || menu.equals("END")));
 
         return menu;
     }
 
     public void setParameter() {
         String menu = parameterMenu();
-        if(menu.equals("END")) {return;}
+        if (menu.equals("END")) {
+            return;
+        }
 
         int num = Column.valueOf(menu).getNum();
 
-        if (parameters[num]==null) {
+        if (parameters[num] == null) {
             insertPrameter(num);
 
         } else {
@@ -42,20 +42,23 @@ public class GroupController {
         }
     }
 
-
     public void viewParameter() {
         String menu = parameterMenu();
-        if(menu.equals("END")) {return;}
+        if (menu.equals("END")) {
+            return;
+        }
         int num = Column.valueOf(menu).getNum();
         System.out.println(parameters[num].prameterShowInfo(num));
     }
 
     public void updateParameter() {
         String menu = parameterMenu();
-        if(menu.equals("END")) {return;}
+        if (menu.equals("END")) {
+            return;
+        }
         int num = Column.valueOf(menu).getNum();
 
-        if (parameters[num]==null) {
+        if (parameters[num] == null) {
             System.out.println("No parameter. Set the parameter first.");
         } else {
             insertPrameter(num);
@@ -73,7 +76,7 @@ public class GroupController {
             System.out.println(" 2. Minimum Total Pay");
             System.out.println(" 3. Back & Save");
             System.out.println("==============================");
-            int menu = in.nextInt();
+            int menu = MainMenu.inputValidation(in.next());
 
             switch (menu) {
                 case 1:
@@ -86,6 +89,8 @@ public class GroupController {
                     break;
                 case 3:
                     parameters[num] = new Parameter(spentTime, totalPay);
+                    spentTime = 0;
+                    totalPay = 0;
                     return;
                 default:
                     System.out.println("Invalid Input. Please try again.");
@@ -94,72 +99,10 @@ public class GroupController {
         }
     }
 
-//    public void summaryAll(Member[] m) {
-//
-//        Member[] glistMember = new Member[MemberController.getMemberCount()];
-//        Member[] vlistMember = new Member[MemberController.getMemberCount()];
-//        Member[] vVlistMember = new Member[MemberController.getMemberCount()];
-//        Member[] olistMember = new Member[MemberController.getMemberCount()];
-//
-//        int gCount = 0;
-//        int vCount = 0;
-//        int vvCount = 0;
-//        int oCount = 0;
-//
-//
-//        if (g.getpSpentTime() == 0 && g.getpTotalPay() == 0
-//                && v.getpSpentTime() == 0 && v.getpTotalPay() == 0
-//                && vv.getpSpentTime() == 0 && vv.getpTotalPay() == 0) {
-//            System.arraycopy(m, 0, olistMember, 0, MemberController.getMemberCount());
-//            oCount = olistMember.length;
-//
-//        }
-//
-//        System.out.println("==============================");
-//        System.out.println("Others : " + oCount + " customer(s)");
-//        System.out.println("------------------------------");
-//        if (oCount == 0) {
-//            System.out.println("No customer.");
-//        } else {
-//            for (int i = 0; i < oCount; i++) {
-//                System.out.println("NO. " + (i + 1) + " => " + olistMember[i].toString());
-//            }
-//        }
-//        System.out.println("==============================");
-//        System.out.println("GENERAL Group : " + gCount + " customer(s)");
-//        System.out.println("[Parameter] " + g.toString());
-//        System.out.println("------------------------------");
-//        if (gCount == 0) {
-//            System.out.println("No customer.");
-//        } else {
-//            for (int i = 0; i < gCount; i++) {
-//                System.out.println("NO." + (i + 1) + " => " + glistMember[i].toString());
-//            }
-//        }
-//        System.out.println("==============================");
-//        System.out.println("VIP Group : " + vCount + " customer(s)");
-//        System.out.println("[Parameter] " + v.toString());
-//        System.out.println("------------------------------");
-//        if (vCount == 0) {
-//            System.out.println("No customer.");
-//        } else {
-//            for (int i = 0; i < vCount; i++) {
-//                System.out.println("NO. " + (i + 1) + " => " + vlistMember[i].toString());
-//            }
-//        }
-//        System.out.println("==============================");
-//        System.out.println("VVIP Group : " + vvCount + " customer(s)");
-//        System.out.println("[Parameter] " + vv.toString());
-//        System.out.println("------------------------------");
-//        if (vvCount == 0) {
-//            System.out.println("No customer.");
-//        } else {
-//            for (int i = 0; i < vvCount; i++) {
-//                System.out.println("NO. " + (i + 1) + " => " + vVlistMember[i].toString());
-//            }
-//        }
-//    }
-
+    public Parameter[] getParameters() {
+        return parameters;
+    }
+}
 
 //    public void summarySortName() {
 //        System.out.println("** Press 'end', if you want to exit! **");
@@ -216,7 +159,7 @@ public class GroupController {
 //        }
 //    }
 
-    //    public void sortName(String menu) {
+//    public void sortName(String menu) {
 //
 //        Member[] glistMember = new Member[MemberController.getMemberCount()];
 //        Member[] vlistMember = new Member[MemberController.getMemberCount()];
@@ -814,4 +757,4 @@ public class GroupController {
 //        }
 
 
-}
+

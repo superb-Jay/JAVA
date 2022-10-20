@@ -9,12 +9,17 @@ public class Member {
     private String customerId;
     private int spentTime;
     private int totalPay;
+    Member[] members;
 
     MemberController mc = new MemberController();
     private int customerNumber = mc.getMemberCount()+1;
 
-    private Member() {
+    public Member() {
 
+    }
+
+    public Member(Member[] members) {
+        this.members = members;
     }
 
     public Member(String customerName, String customerId, int spentTime, int totalPay) {
