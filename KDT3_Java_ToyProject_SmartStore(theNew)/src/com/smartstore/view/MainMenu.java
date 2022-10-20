@@ -135,8 +135,8 @@ public class MainMenu {
                 case 1:
                     s.summaryAll(mc.getMem(),gc.getParameters());
                     break;
-//                case 2:
-//                    gc.summarySortName();
+                case 2:
+                    s.summarySortName(mc.getMem(),gc.getParameters());
 //                    break;
 //                case 3:
 //                    gc.summarySortTime();

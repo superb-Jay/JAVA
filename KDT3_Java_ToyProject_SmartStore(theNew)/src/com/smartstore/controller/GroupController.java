@@ -104,23 +104,7 @@ public class GroupController {
     }
 }
 
-//    public void summarySortName() {
-//        System.out.println("** Press 'end', if you want to exit! **");
-//        System.out.println("Which order (ASCENDING, DESCENDING)?");
-//        String menu = in.next().toUpperCase();
-//
-//        switch (menu) {
-//            case "ASCENDING":
-//            case "DESCENDING":
-//                sortName(menu);
-//                break;
-//            case "END":
-//                return;
-//            default:
-//                System.out.println("Invalid Input. Please try again.");
-//                break;
-//        }
-//    }
+
 
 //    public void summarySortTime() {
 //        System.out.println("** Press 'end', if you want to exit! **");
