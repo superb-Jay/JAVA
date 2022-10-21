@@ -17,22 +17,36 @@ public class MemberController {
     private static int memberCount = 0;
 
     public void addCustomerData() {
+        int size = 0;
+        boolean run = true;
 
-        System.out.println("** Press -1, if you want to exit! **");
-        System.out.println("How many customers to input?");
-        System.out.println("choose One: ");
-        int size = MainMenu.inputValidation(in.next());
-        if (size == -1) {
-            new MainMenu().customerData();
+        while(run) {
+
+            System.out.println("** Press -1, if you want to exit! **");
+            System.out.println("How many customers to input?");
+            System.out.println("choose One: ");
+            String str = "";
+            try {
+                str = in.next();
+                size = Integer.parseInt(str);
+                if (size == -1) {
+                    return;
+                }
+            } catch (NumberFormatException e) {
+
+            }
+            if (size > 0 && size < 2147483647) {
+                run = false;
+            }
         }
 
-            int count = 0;
-            String name = null;
-            String id = null;
-            int time = 0;
-            int pay = 0;
+        int count = 0;
+        String name = null;
+        String id = null;
+        int time = 0;
+        int pay = 0;
 
-         while (true) {
+        while (true) {
 
             if (count != size) {
                 System.out.println("====== Customer " + (count + 1) + " Info. ======");
@@ -44,7 +58,15 @@ public class MemberController {
                 System.out.println(" 5. Save & Back");
                 System.out.println("==============================");
                 System.out.println("choose One: ");
-                int menuNum = MainMenu.inputValidation(in.next());
+
+                String str = "";
+                int menuNum;
+                try {
+                    str = in.next();
+                    menuNum = Integer.parseInt(str);
+                } catch (NumberFormatException e) {
+                    menuNum = 0;
+                }
 
 
                 switch (menuNum) {
@@ -57,12 +79,30 @@ public class MemberController {
                         id = in.next();
                         break;
                     case 3:
-                        System.out.println("Input Customer's Spent Time at Your Store:");
-                        time = MainMenu.inputValidation(in.next());
+                        boolean run3 = true;
+                        while (run3) {
+                            System.out.println("Input Customer's Spent Time at Your Store:");
+                            try {
+                                str = in.next();
+                                time = Integer.parseInt(str);
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid Input. Please try again.");
+                            }
+                            run3 = false;
+                        }
                         break;
                     case 4:
-                        System.out.println("Input Customer's Total Payment at Your Store:");
-                        pay = MainMenu.inputValidation(in.next());
+                        boolean run2 = true;
+                        while (run2) {
+                            System.out.println("Input Customer's Total Payment at Your Store:");
+                            try {
+                                str = in.next();
+                                time = Integer.parseInt(str);
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid Input. Please try again.");
+                            }
+                            run2 = false;
+                        }
                         break;
                     case 5:
                         if (memberCount + 1 == mem.length) {
@@ -112,8 +152,24 @@ public class MemberController {
 
     public void updateCustomerData() {
         viewCustomerData();
-        System.out.println("Which customer ( 1 ~ 0 )?");
-        int serialNum = MainMenu.inputValidation(in.next());
+
+        boolean run = true;
+        int serialNum = 0;
+        String str = "";
+
+        while(run) {
+            System.out.println("Which customer ( 1 ~ " + MemberController.getMemberCount() +" )");
+            try {
+                str = in.next();
+                serialNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+            }
+            if(serialNum > 0 && serialNum <= MemberController.getMemberCount() ) {
+                run = false;
+            }else{
+                System.out.println("Invalid Input. Please try again.");
+            }
+        }
 
         while (true) {
             System.out.println("==============================");
@@ -124,7 +180,13 @@ public class MemberController {
             System.out.println(" 5. Save & Back");
             System.out.println("==============================");
             System.out.println("choose One: ");
-            int menuNum = in.nextInt();
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
 
             switch (menuNum) {
                 case 1:
@@ -169,22 +231,46 @@ public class MemberController {
     }
 
     public void deleteCustomerData() {
-        viewCustomerData();
-        System.out.println("Which customer ( 1 ~ 0 )?");
-        int serialNum = MainMenu.inputValidation(in.next());
-        int deleteIndex = 0;
-        for (int i = 0; i < memberCount; i++) {
-            if (mem[i].getCustomerNumber() == serialNum) {
-                deleteIndex = i;
+
+        if(MemberController.getMemberCount() == 0) {
+            System.out.println("No. Customers!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        }else{
+
+            viewCustomerData();
+            boolean run = true;
+            int serialNum = 0;
+
+            while(run) {
+                System.out.println("Which customer ( 1 ~ " + MemberController.getMemberCount() +" )");
+                String str = "";
+                try {
+                    str = in.next();
+                    serialNum = Integer.parseInt(str);
+                } catch (NumberFormatException e) {
+
+                }
+                if(serialNum > 0 && serialNum <= MemberController.getMemberCount()) {
+                    run = false;
+                }else{
+                    System.out.println("Invalid Input. Please try again.");
+                }
             }
+
+            int deleteIndex = 0;
+            for (int i = 0; i < memberCount; i++) {
+                if (mem[i].getCustomerNumber() == serialNum) {
+                    deleteIndex = i;
+                }
+            }
+            Member[] newMem = new Member[mem.length - 1];
+            System.arraycopy(mem, 0, newMem, 0, deleteIndex);
+            System.arraycopy(mem, deleteIndex + 1, newMem, deleteIndex, mem.length - deleteIndex - 1);
+            mem = newMem;
+            memberCount--;
+            System.out.println("Customer Data Deleted Successfully !");
+            viewCustomerData();
         }
-        Member[] newMem = new Member[mem.length - 1];
-        System.arraycopy(mem, 0, newMem, 0, deleteIndex);
-        System.arraycopy(mem, deleteIndex + 1, newMem, deleteIndex, mem.length - deleteIndex - 1);
-        mem = newMem;
-        memberCount--;
-        System.out.println("Customer Data Deleted Successfully !");
-        viewCustomerData();
     }
 
     public static int getMemberCount() {
