@@ -118,6 +118,7 @@ public class MainMenu {
     }
 
     public void summary() {
+
         while (true) {
 
             System.out.println("==========================");
@@ -128,27 +129,20 @@ public class MainMenu {
             System.out.println(" 5. Back");
             System.out.println("==========================");
             System.out.println("choose One: ");
-
             int menuNum = inputValidation(in.next());
+            Summary[] summaryAll = s.summaryAll(mc.getMem(), gc.getParameters());
 
             switch (menuNum) {
                 case 1:
-                    s.summaryAll(mc.getMem(),gc.getParameters());
+                    s.viewSummary(gc.getParameters(), summaryAll);
                     break;
                 case 2:
-                    s.summarySortName(mc.getMem(),gc.getParameters());
-//                    break;
-//                case 3:
-//                    gc.summarySortTime();
-//                    break;
-//                case 4:
-//                    gc.summarySortPayment();
-//                    break;
-                case 5:
-                    mainMenu();
-                default:
-                    System.out.println("Invalid Input. Please try again.");
+                case 3:
+                case 4:
+                    s.summarySort(gc.getParameters(), summaryAll, menuNum);
                     break;
+                case 5:
+                    return;
             }
         }
     }
