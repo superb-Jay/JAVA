@@ -1,6 +1,6 @@
 package me.day14.practice.practice03;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private String studentNo;
     private String name;
     private Integer score;
@@ -46,5 +46,9 @@ public class Student {
                 ", score=" + score +
                 '}';
     }
-}
 
+    @Override
+    public int compareTo(Student o) {
+        return this.score - o.score;
+    }
+}

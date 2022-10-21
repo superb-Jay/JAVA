@@ -21,8 +21,13 @@ public class StudentDao {
      * @Param: Student key 값
      * @return: select된 Student 반환
      * */
-    public Student select(String key) {
-        // TODO: select 함수 구현
+    public Student select(String key) {// TODO: select 함수 구현
+        Student student = new Student();
+        if(map.containsKey(key)){
+            student = map.get(key);
+            return student;
+        }
+
         return null;
     }
 
@@ -59,8 +64,12 @@ public class StudentDao {
      * @return: DB에 정상적으로 insert 된 객체 반환
      * @exception: 현재 DB에 있는 객체들과 중복된 키를 가질 수 없음
      * */
-    public Student insert(String key, Student student) {
-        // TODO: insert 함수 구현
+    public Student insert(String key, Student student) {// TODO: insert 함수 구현
+        if(!map.containsKey(key)){
+            map.put(key,student);
+            return student;
+        }
+
         return null;
     }
 
@@ -69,9 +78,16 @@ public class StudentDao {
      * @return: Students 객체 중 DB에 정상적으로 insert 된 객체 수 반환
      * @exception: 현재 DB에 있는 객체들과 중복된 키를 가질 수 없음
      * */
-    public int insert(List<String> keys, Students students) {
-        // TODO: insert 함수 구현
-        return 0;
+    public int insert(List<String> keys, Students students) {// TODO: insert 함수 구현
+        int count = 0;
+        for(int i = 0; i < keys.size(); i++){
+            if(!map.containsKey(keys.get(i))){
+                map.put(keys.get(i),students.getStudents().get(i));
+                count++;
+            }
+
+        }
+        return count;
     }
 
     public int update(Predicate<Student> condition, Column column, Object value) {
@@ -134,8 +150,13 @@ public class StudentDao {
      * @Param: Student key 값
      * @return: 삭제된 Student 반환
      * */
-    public Student delete(String key) {
-        // TODO: delete 함수 구현
+    public Student delete(String key) {// TODO: delete 함수 구현
+        Student delete = new Student();
+        if(map.containsKey(key)){
+            delete = map.get(key);
+            map.remove(key);
+            return delete;
+        }
         return null;
     }
 
