@@ -26,7 +26,14 @@ public class MainMenu {
             System.out.println("==========================");
             System.out.println("choose One: ");
 
-            int menuNum = inputValidation(in.next());
+            String str = "";
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
 
             switch (menuNum) {
                 case 1:
@@ -39,8 +46,7 @@ public class MainMenu {
                     summary();
                     break;
                 case 4:
-                    System.out.println("Program Finished.");
-                    System.exit(0);
+                    return;
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
@@ -60,7 +66,14 @@ public class MainMenu {
             System.out.println("==========================");
             System.out.println("choose One: ");
 
-            int menuNum = inputValidation(in.next());
+            String str = "";
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
 
             switch (menuNum) {
                 case 1:
@@ -73,7 +86,7 @@ public class MainMenu {
                     gc.updateParameter();
                     break;
                 case 4:
-                    mainMenu();
+                    return;
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
@@ -94,7 +107,14 @@ public class MainMenu {
             System.out.println("==========================");
             System.out.println("choose One: ");
 
-            int menuNum = inputValidation(in.next());
+            String str = "";
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
 
             switch (menuNum) {
                 case 1:
@@ -108,8 +128,9 @@ public class MainMenu {
                     break;
                 case 4:
                     mc.deleteCustomerData();
+                    break;
                 case 5:
-                    mainMenu();
+                    return;
                 default:
                     System.out.println("Invalid Input. Please try again.");
                     break;
@@ -118,6 +139,7 @@ public class MainMenu {
     }
 
     public void summary() {
+        Summary[] summaryAll = s.summaryAll(mc.getMem(), gc.getParameters());
 
         while (true) {
 
@@ -129,8 +151,14 @@ public class MainMenu {
             System.out.println(" 5. Back");
             System.out.println("==========================");
             System.out.println("choose One: ");
-            int menuNum = inputValidation(in.next());
-            Summary[] summaryAll = s.summaryAll(mc.getMem(), gc.getParameters());
+            String str = "";
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
 
             switch (menuNum) {
                 case 1:
@@ -145,18 +173,6 @@ public class MainMenu {
                     return;
             }
         }
-    }
-
-    public static int inputValidation(String input) {
-        String str = "";
-        int num;
-        try {
-            str = input;
-            num = Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            num = 0;
-        }
-        return num;
     }
 }
 

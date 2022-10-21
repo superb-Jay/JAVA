@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf45e676-3e83-42d6-a0b4-1ed85697f23e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/model/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(new)/src/com/smartstore/model/vo/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(theNew)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KDT3_Java_ToyProject_SmartStore(theNew)/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/WorkSpace/JAVA/KDT3_Java_ToyProject_SmartStore(new)",
+    "last_opened_file_path": "C:/WorkSpace/Kdt3/KDT3_Java_ToyProject_SmartStore",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -88,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665330149309</updated>
       <workItem from="1666095378651" duration="33000" />
+      <workItem from="1666342446787" duration="20000" />
     </task>
     <servers />
   </component>

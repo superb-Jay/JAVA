@@ -1,9 +1,7 @@
 package com.smartstore.controller;
 
 import com.smartstore.model.vo.Column;
-import com.smartstore.model.vo.Member;
 import com.smartstore.model.vo.Parameter;
-import com.smartstore.view.MainMenu;
 
 import java.util.*;
 
@@ -11,7 +9,7 @@ public class GroupController {
     Scanner in = new Scanner(System.in);
     Parameter[] parameters = new Parameter[Column.values().length];
 
-    public String parameterMenu() {
+    public void setParameter() {
         String menu;
         do {
             System.out.println("** Press 'end', if you want to exit! **");
@@ -19,11 +17,6 @@ public class GroupController {
             menu = in.next().toUpperCase();
         } while (!(menu.equals("GENERAL") || menu.equals("VIP") || menu.equals("VVIP") || menu.equals("END")));
 
-        return menu;
-    }
-
-    public void setParameter() {
-        String menu = parameterMenu();
         if (menu.equals("END")) {
             return;
         }
@@ -43,16 +36,33 @@ public class GroupController {
     }
 
     public void viewParameter() {
-        String menu = parameterMenu();
+        String menu;
+        do {
+            System.out.println("** Press 'end', if you want to exit! **");
+            System.out.println("Which group (GENERAL, VIP, VVIP)?");
+            menu = in.next().toUpperCase();
+        } while (!(menu.equals("GENERAL") || menu.equals("VIP") || menu.equals("VVIP") || menu.equals("END")));
+
         if (menu.equals("END")) {
             return;
         }
         int num = Column.valueOf(menu).getNum();
-        System.out.println(parameters[num].prameterShowInfo(num));
+
+        if (parameters[num] == null) {
+            System.out.println("No parameter. Set the parameter first.");
+        }else{
+            System.out.println(parameters[num].prameterShowInfo(num));
+        }
     }
 
     public void updateParameter() {
-        String menu = parameterMenu();
+        String menu;
+        do {
+            System.out.println("** Press 'end', if you want to exit! **");
+            System.out.println("Which group (GENERAL, VIP, VVIP)?");
+            menu = in.next().toUpperCase();
+        } while (!(menu.equals("GENERAL") || menu.equals("VIP") || menu.equals("VVIP") || menu.equals("END")));
+
         if (menu.equals("END")) {
             return;
         }
@@ -76,9 +86,17 @@ public class GroupController {
             System.out.println(" 2. Minimum Total Pay");
             System.out.println(" 3. Back & Save");
             System.out.println("==============================");
-            int menu = MainMenu.inputValidation(in.next());
 
-            switch (menu) {
+            String str = "";
+            int menuNum;
+            try {
+                str = in.next();
+                menuNum = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                menuNum = 0;
+            }
+
+            switch (menuNum) {
                 case 1:
                     System.out.println("Input Minimum Spent Time:");
                     spentTime = in.nextInt();

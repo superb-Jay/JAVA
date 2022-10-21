@@ -85,6 +85,7 @@ public class Summary {
             System.out.println("Which order (ASCENDING, DESCENDING)?");
             menu = in.next().toUpperCase();
         } while (!(menu.equals("ASCENDING") || menu.equals("DESCENDING") || menu.equals("END")));
+        if(menu.equals("END")){ return;}
 
         switch (menuNum) {
             case 2:
@@ -107,6 +108,14 @@ public class Summary {
     public Summary[] sortName(String menu, Summary[] summary) {
         Summary[] copy = new Summary[summary.length];
         System.arraycopy(summary, 0, copy, 0, summary.length);
+
+        for (int i = 0; i < copy.length ; i++) {
+            for (int j = 0; j < copy[i].members.length ; j++) {
+                if(copy[i].members[j].getCustormerName() == null) {
+                    return copy;
+                }
+            }
+        }
 
         if (menu.equals("ASCENDING")) {
 
