@@ -149,12 +149,12 @@ public class MainMenu {
 
     public static int inputValidation(String input) {
         String str = "";
-        int num = 0;
+        int num;
         try {
             str = input;
             num = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-
+            num = 0;
         }
         return num;
     }
