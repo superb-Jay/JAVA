@@ -139,6 +139,7 @@ public class MainMenu {
     }
 
     public void summary() {
+
         Summary[] summaryAll = s.summaryAll(mc.getMem(), gc.getParameters());
 
         while (true) {
