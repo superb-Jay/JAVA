@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf45e676-3e83-42d6-a0b4-1ed85697f23e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/smartstore/controller/Summary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/smartstore/controller/Summary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +131,10 @@
       <workItem from="1666355107301" duration="13000" />
       <workItem from="1666355174677" duration="1948000" />
       <workItem from="1666357386970" duration="22000" />
+      <workItem from="1666358256702" duration="11000" />
+      <workItem from="1666373675942" duration="35000" />
+      <workItem from="1666373785075" duration="15000" />
+      <workItem from="1666373893098" duration="15000" />
     </task>
     <servers />
   </component>
