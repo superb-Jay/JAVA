@@ -1,19 +1,8 @@
 package practice;
 
 class Solution {
-    public int solution(int[] priorities, int location) {
+    public int solution(int a, int b, int n) {
         int answer = 0;
-
-        for (int i = 0; i < priorities.length; i++) {
-            for (int j = 0; j < i ; j++) {
-                if(priorities[i] < priorities[j]) {
-                    int temp = priorities[j];
-                    priorities[i] = priorities[j];
-                    priorities[i] = temp;
-                }
-
-            }
-        }
 
 
 
@@ -26,10 +15,12 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        int[] var = {2,1,3,2};
-        int lo = 2;
+        int a = 2;
+        int b = 1;
+        int n = 20;
 
-        System.out.println(new Solution().solution(var,lo));
+
+        System.out.println(new Solution().solution(a,b,n));
 
     }
 
