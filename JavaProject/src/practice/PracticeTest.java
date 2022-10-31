@@ -3,21 +3,17 @@ package practice;
 import java.util.Arrays;
 
 public class PracticeTest {
+
     public static void main(String[] args) {
+        // isEmpty: 문자열 길이 확인
+        // isBlank: 문자열이 비어있거나 whitespace 문자인지 확인
 
-        // String 수정 불가 (String Pool에 저장)
-        String str = "this is constant string. Immutable";
-        // str.charAt(0) = 'T'; // 불가능
-
-        char[] charArr = str.toCharArray();
-        System.out.println(Arrays.toString(charArr));
-
-        // char[]은 수정 가능 (힙에 저장)
-        // StringBuilder, StringBuffer도 char[]로 구현되어있음
-        charArr[0] = 'T'; // 가능
-        System.out.println(Arrays.toString(charArr));
-        String res = String.valueOf(charArr); // 수정완료. 다시 상수화하기
-        System.out.println(res);
+        String s1 = "";
+        String s2 = "\t\n   ";
+        System.out.println(s1.isEmpty()); // true
+        System.out.println(s2.isEmpty()); // 문자열 길이 0이 아님. false
+        System.out.println(s1.isBlank()); // true
+        System.out.println(s2.isBlank()); // white space 존재. true
     }
 }
 
