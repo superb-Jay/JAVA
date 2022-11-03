@@ -9,13 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf45e676-3e83-42d6-a0b4-1ed85697f23e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../JavaProject/src/practice/PracticeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaProject/src/practice/PracticeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/smartstore/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/smartstore/controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/smartstore/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/smartstore/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/smartstore/controller/Summary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/smartstore/controller/Summary.java" afterDir="false" />
-    </list>
+    <list default="true" id="bf45e676-3e83-42d6-a0b4-1ed85697f23e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,15 +48,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/WorkSpace/JAVA/KDT3_Java_ToyProject_SmartStore(new)",
+    "last_opened_file_path": "C:/WorkSpace/Spring/javaConfig",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -130,23 +120,8 @@
       <workItem from="1666342162197" duration="242000" />
       <workItem from="1666342436192" duration="9000" />
       <workItem from="1666342504559" duration="26000" />
-      <workItem from="1666342913621" duration="57000" />
-      <workItem from="1666347184805" duration="6000" />
-      <workItem from="1666347228436" duration="6960000" />
-      <workItem from="1666354308529" duration="10000" />
-      <workItem from="1666354654469" duration="32000" />
-      <workItem from="1666354834796" duration="63000" />
-      <workItem from="1666355107301" duration="13000" />
-      <workItem from="1666355174677" duration="1948000" />
-      <workItem from="1666357386970" duration="22000" />
-      <workItem from="1666358256702" duration="11000" />
-      <workItem from="1666373675942" duration="35000" />
-      <workItem from="1666373785075" duration="15000" />
-      <workItem from="1666373893098" duration="15000" />
-      <workItem from="1666585036384" duration="22000" />
-      <workItem from="1667279298251" duration="6772000" />
-      <workItem from="1667289734363" duration="16000" />
-      <workItem from="1667294896463" duration="244000" />
+      <workItem from="1667295241017" duration="230000" />
+      <workItem from="1667295917581" duration="20000" />
     </task>
     <servers />
   </component>
@@ -164,7 +139,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -188,10 +163,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/KDT3_Java_ToyProject_SmartStore_theNew_$Run.ic" NAME="Run Coverage Results" MODIFIED="1666356043493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.smartstore.run.*</FILTER>
-    </SUITE>
   </component>
 </project>

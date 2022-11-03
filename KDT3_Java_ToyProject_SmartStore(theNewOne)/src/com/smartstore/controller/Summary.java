@@ -12,15 +12,13 @@ public class Summary {
 
     Member[] members;
     Column[] columns = Column.values();
-    int count;
-
+    int[] count = new int[4];
 
     public Summary() {
     }
 
-    public Summary(Member[] members, int count) {
+    public Summary(Member[] members) {
         this.members = members;
-        this.count = count;
     }
 
     public Summary[] summaryAll(Member[] members, Parameter[] parameters) {
@@ -30,52 +28,49 @@ public class Summary {
         Member[] vList = new Member[MemberController.getMemberCount()];
         Member[] vvList = new Member[MemberController.getMemberCount()];
 
-        int oCount = 0;
-        int gCount = 0;
-        int vCount = 0;
-        int vvCount = 0;
+        Summary[] summary = {new Summary(oList), new Summary(gList), new Summary(vList), new Summary(vvList)};
+
 
         if ((parameters[1] == null) && (parameters[2] == null) && (parameters[3] == null)) {
             System.arraycopy(members, 0, oList, 0, MemberController.getMemberCount());
-            oCount = oList.length;
-            Summary[] summary = {new Summary(oList,oCount), new Summary(gList,gCount), new Summary(vList,vCount), new Summary(vvList,vvCount)};
+            count[0] = oList.length;
             return summary;
         }
 
-        for (int i = 0; i < MemberController.getMemberCount(); i++) {
-            if (parameters[3] != null && parameters[3].getSpentTime() < members[i].getSpentTime() && parameters[3].getTotalPay() < members[i].getTotalPay()) {
-                vvList[vvCount] = members[i];
-                vvCount++;
-            } else if (parameters[2] != null && parameters[2].getSpentTime() < members[i].getSpentTime() && parameters[2].getTotalPay() < members[i].getTotalPay()) {
-                vList[vCount] = members[i];
-                vCount++;
-            } else if (parameters[1] != null && parameters[1].getSpentTime() < members[i].getSpentTime() && parameters[1].getTotalPay() < members[i].getTotalPay()) {
-                gList[gCount] = members[i];
-                gCount++;
+        for (int i = parameters.length - 1; i > 0; i--) {
+            if (parameters[i] == null) {
+
             } else {
-                oList[oCount] = members[i];
-                oCount++;
+                for (int j = 0; j < MemberController.getMemberCount(); j++) {
+                    if (parameters[i].getSpentTime() < members[j].getSpentTime() && parameters[i].getTotalPay() < members[j].getSpentTime()) {
+                        summary[i].members[count[i]] = members[j];
+                        count[i]++;
+                    } else {
+                        oList[count[0]] = members[j];
+                        count[0]++;
+                    }
+                }
             }
         }
-        return new Summary[]{new Summary(oList,oCount), new Summary(gList,gCount), new Summary(vList,vCount), new Summary(vvList,vvCount)};
+        return summary;
     }
 
     public void viewSummary(Parameter[] parameters, Summary[] summary) {
 
         for (int i = 0; i < parameters.length; i++) {
             System.out.println("==============================");
-            System.out.println(columns[i].getName() + " : " + summary[i].count + " customer(s)");
+            System.out.println(columns[i].getName() + " : " + count[i] + " customer(s)");
             if (parameters[i] == null) {
                 System.out.println(columns[i].getName() + " Group : No parameters");
             } else {
                 System.out.println(parameters[i].prameterShowInfo(i));
             }
             System.out.println("------------------------------");
-            if (summary[i].count == 0) {
+            if (count[i] == 0) {
                 System.out.println("No customer.");
             } else {
-                for (int j = 0; j < summary[i].count; j++) {
-                    System.out.println("NO. " + (j + 1) + " => " + columns[i].getName()+" "+ summary[i].members[j].toString());
+                for (int j = 0; j < count[i]; j++) {
+                    System.out.println("NO. " + (j + 1) + " => " + summary[i].members[j].toString());
                 }
             }
         }
@@ -90,9 +85,6 @@ public class Summary {
             System.out.println("Which order (ASCENDING, DESCENDING)?");
             menu = in.next().toUpperCase();
         } while (!(menu.equals("ASCENDING") || menu.equals("DESCENDING") || menu.equals("END")));
-        if (menu.equals("END")) {
-            return;
-        }
 
         switch (menuNum) {
             case 2:
@@ -116,21 +108,13 @@ public class Summary {
         Summary[] copy = new Summary[summary.length];
         System.arraycopy(summary, 0, copy, 0, summary.length);
 
-        for (int i = 0; i < copy.length; i++) {
-            for (int j = 0; j < copy[i].members.length; j++) {
-                if (copy[i].members[j].getCustormerName() == null) {
-                    return copy;
-                }
-            }
-        }
-
         if (menu.equals("ASCENDING")) {
 
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getCustormerName() == null) {
                             } else {
@@ -147,10 +131,10 @@ public class Summary {
 
         } else if (menu.equals("DESCENDING")) {
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getCustormerName() == null) {
                             } else {
@@ -175,10 +159,10 @@ public class Summary {
         if (menu.equals("ASCENDING")) {
 
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getSpentTime() == 0) {
                             } else {
@@ -195,10 +179,10 @@ public class Summary {
 
         } else if (menu.equals("DESCENDING")) {
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getSpentTime() == 0) {
                             } else {
@@ -215,7 +199,6 @@ public class Summary {
         }
         return copy;
     }
-
     public Summary[] sortPayment(String menu, Summary[] summary) {
         Summary[] copy = new Summary[summary.length];
         System.arraycopy(summary, 0, copy, 0, summary.length);
@@ -223,10 +206,10 @@ public class Summary {
         if (menu.equals("ASCENDING")) {
 
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getTotalPay() == 0) {
                             } else {
@@ -243,10 +226,10 @@ public class Summary {
 
         } else if (menu.equals("DESCENDING")) {
             for (int i = 0; i < copy.length; i++) {
-                if (summary[i].count == 0) {
+                if (count[i] == 0) {
 
                 } else {
-                    for (int j = 0; j < summary[i].count; j++) {
+                    for (int j = 0; j < count[i]; j++) {
                         for (int k = 0; k < j; k++) {
                             if (copy[i].members[k].getTotalPay() == 0) {
                             } else {

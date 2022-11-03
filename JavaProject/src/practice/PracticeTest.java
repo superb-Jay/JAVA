@@ -3,17 +3,20 @@ package practice;
 import java.util.Arrays;
 
 public class PracticeTest {
+    int a,b=10;
 
     public static void main(String[] args) {
-        // isEmpty: 문자열 길이 확인
-        // isBlank: 문자열이 비어있거나 whitespace 문자인지 확인
 
-        String s1 = "";
-        String s2 = "\t\n   ";
-        System.out.println(s1.isEmpty()); // true
-        System.out.println(s2.isEmpty()); // 문자열 길이 0이 아님. false
-        System.out.println(s1.isBlank()); // true
-        System.out.println(s2.isBlank()); // white space 존재. true
+        int i4 = Integer.parseInt("100", 2); // 문자열 100을 2진수숫자로 변환.
+        int i5 = Integer.parseInt("100", 8);
+        int i6 = Integer.parseInt("100", 16);
+        int i7 = Integer.parseInt("FF", 16);
+
+
+        System.out.println();
+
+
+
     }
 }
 
