@@ -1,19 +1,16 @@
 package practice;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 class Solution {
-    public int solution(String[] babbling) {
-        int answer = 0;
-        String[] array = {"aya", "ye", "woo", "ma"};
+    public int[] solution(int num, int total) {
+        int[] answer = new int[num];
 
-        int count = 0;
-        for (int i = 0; i < babbling.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if(array[i].contains(babbling[j]))
-                answer++;
-            }
+        int centerNum = total / num; // 4
+        int subNum = total % num == 0 ? num/2 : num/2-1;
+
+        int startNum  = centerNum - subNum;
+
+        for (int i = 0; i < answer.length ; i++) {
+            answer[i] = startNum+i;
         }
 
         return answer;
@@ -24,13 +21,16 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-       String[] babbling = {"aya", "yee", "u", "maa", "wyeoo"};
+        int num = 5;
+        int total = 5;
 
-        System.out.println(new Solution().solution(babbling));
+
+        System.out.println(new Solution().solution(num, total));
 
     }
 
 }
+
 
 
 
