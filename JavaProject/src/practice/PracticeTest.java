@@ -9,10 +9,10 @@ public class PracticeTest {
     public static void main(String[] args) {
 
 //        a =10;
-
-        int a = 10;
-
-        var a= 10;
+//
+//        int a = 10;
+//
+//        var a= 10;
 
 
 
