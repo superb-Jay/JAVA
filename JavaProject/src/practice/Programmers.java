@@ -1,22 +1,34 @@
 package practice;
 
+import java.util.ArrayList;
+
 class Solution {
-    public int solution(int i, int j, int k) {
-        int answer = 0;
-        String[] array = new String[j-i+1];
+    public String[] solution(String[] quiz) {
 
-        for (int u = 0; u < array.length ; u++) {
-            array[u] = String.valueOf(i);
-            i++;
-        }
+        ArrayList<String> list = new ArrayList<>();
 
-        for (int l = 0; l < array.length; l++) {
-            for (int m = 0; m < array[l].length(); m++) {
-                if(String.valueOf(array[l].charAt(m)).equals(String.valueOf(k))) {
-                    answer++;
+        for (int i = 0; i < quiz.length ; i++) {
+            String[] array = quiz[i].split(" ");
+
+            for (int j = 0; j < array.length ; j++) {
+                if(array[j].equals("-")) {
+                    if (Integer.parseInt(array[array.length - 1]) == (Integer.parseInt(array[0]) - Integer.parseInt(array[2]))) {
+                        list.add("O");
+                    } else {
+                        list.add("X");
+                    }
+                }else if (array[j].equals("+")) {
+                    if (Integer.parseInt(array[array.length - 1]) == (Integer.parseInt(array[0]) + Integer.parseInt(array[2]))) {
+                        list.add("O");
+                    } else {
+                        list.add("X");
+                    }
                 }
             }
         }
+        System.out.println(list);
+        String[] answer= list.toArray(new String[list.size()]);
+
         return answer;
     }
 }
@@ -25,11 +37,8 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        int i = 1;
-        int j = 13;
-        int k = 1;
-
-        System.out.println(new Solution().solution(i,j,k));
+        String[] quiz = {"3 - 4 = -3", "5 + 6 = 11"};
+        System.out.println(new Solution().solution(quiz));
 
     }
 
