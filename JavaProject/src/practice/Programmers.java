@@ -1,15 +1,29 @@
 package practice;
 
 
-class Solution {
-    public int solution(int chicken) {
-        int answer = 0;
-        int coupon = chicken;
+import java.util.Arrays;
 
-        while (coupon >= 10) {
-            answer += coupon/10;
-            coupon = coupon/10+coupon%10;
+class Solution {
+    public int solution(int[][] board) {
+        int answer = 0;
+        String[] array = new String[board.length];
+        String str = "";
+
+        // 110 = 6 / 100 = 4  / 총 25고 / 빈칸이 16
+
+        for (int i = 0; i < board.length ; i++) {
+            for (int j = 0; j < board[i].length ; j++) {
+                 str += String.valueOf(board[i][j]);
+            }
+            array[i] = str;
+            str="";
         }
+
+        System.out.println(Arrays.toString(array));
+
+
+        System.out.println(board.length);
+
 
         return answer;
     }
@@ -18,9 +32,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        int chicken = 1081;
+        int[][] board = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}};
 
-        System.out.println(new Solution().solution(chicken));
+        System.out.println(new Solution().solution(board));
 
     }
 
