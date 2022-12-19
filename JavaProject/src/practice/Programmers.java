@@ -1,11 +1,16 @@
 package practice;
 
-import java.util.Arrays;
 
 class Solution {
-    public String solution(String bin1, String bin2) {
-        String answer = "";
-        answer = Integer.toBinaryString(Integer.parseInt(bin1,2) + Integer.parseInt(bin2,2));
+    public int solution(int chicken) {
+        int answer = 0;
+        int coupon = chicken;
+
+        while (coupon >= 10) {
+            answer += coupon/10;
+            coupon = coupon/10+coupon%10;
+        }
+
         return answer;
     }
 }
@@ -13,9 +18,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        String bin1 = "10";
-        String bin2 = "11";
-        System.out.println(new Solution().solution(bin1,bin2));
+        int chicken = 1081;
+
+        System.out.println(new Solution().solution(chicken));
 
     }
 
