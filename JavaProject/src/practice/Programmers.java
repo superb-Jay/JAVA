@@ -3,12 +3,25 @@ package practice;
 import java.util.Arrays;
 
 class Solution {
-    public int solution(int[] array) {
-        int answer = 0;
-        Arrays.sort(array);
+    public int solution(String[] spell, String[] dic) {
+        int answer = 2;
+        String checkStr = "";
+        Arrays.sort(spell);
+        for (int i = 0; i < spell.length; i++) {
+            checkStr+=spell[i];
+        }
+//        System.out.println(checkStr);
 
-        answer = array[array.length/2];
+        for (int i = 0; i < dic.length ; i++) {
+            char[] chars = dic[i].toCharArray();
+            Arrays.sort(chars);
+            dic[i] = new String(chars);
 
+            if(dic[i].equals(checkStr)) {
+                answer =1;
+            }
+        }
+//        System.out.println(Arrays.toString(dic));
         return answer;
     }
 }
@@ -17,9 +30,10 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        int[] array = {1, 2, 7, 10, 11};
+        String[] spell = {"s", "o", "m", "d"};
+        String[] dic = {"moos", "dzx", "smm", "sunmmo", "som"};
 
-        System.out.println(new Solution().solution(array));
+        System.out.println(new Solution().solution(spell, dic));
 
     }
 
