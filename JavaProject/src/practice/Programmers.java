@@ -1,43 +1,31 @@
 package practice;
 
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.ArrayList;
 
 class Solution {
-    public int solution(int[][] board) {
-        int answer = 0;
-        String[] array = new String[board.length];
-        String str = "";
-        String str1 = "";
+    public int[] solution(int n) {
+        int[] answer = {};
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                str += String.valueOf(board[i][j]);
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i <= n ; i++) {
+            if(i%2 != 0) {
+                list.add(i);
             }
-            array[i] = str;
-            str = "";
-            //1,2,4,8,16
         }
-
-
-
-
-        System.out.println(Arrays.toString(array));
-
-
+        answer = list.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
         return answer;
     }
 }
-
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int[][] board = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}};
-//                int[][] board = {{0, 0, 0, 0,0},{0, 0, 0, 0, 0},{0, 0, 0, 0, 0},{0, 0, 1, 1, 0},{0, 0, 0, 0, 0}};
+        int n = 10;
 
-        System.out.println(new Solution().solution(board));
+        System.out.println(new Solution().solution(n));
 
     }
 
