@@ -1,28 +1,15 @@
 package practice;
 
-import java.util.Arrays;
 
 class Solution {
-    public int solution(String[] spell, String[] dic) {
-        int answer = 2;
-        String checkStr = "";
-        Arrays.sort(spell);
-        for (int i = 0; i < spell.length; i++) {
-            checkStr+=spell[i];
-        }
-//        System.out.println(checkStr);
+    public int solution(int price) {
+        int answer = 0;
 
-        for (int i = 0; i < dic.length ; i++) {
-            char[] chars = dic[i].toCharArray();
-            Arrays.sort(chars);
-            dic[i] = new String(chars);
+        if(price>=500000) return (int)(price*0.8);
+        if(price>=300000) return (int)(price*0.9);
+        if(price>=100000) return (int)(price*0.95);
 
-            if(dic[i].equals(checkStr)) {
-                answer =1;
-            }
-        }
-//        System.out.println(Arrays.toString(dic));
-        return answer;
+        return price;
     }
 }
 
@@ -30,10 +17,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        String[] spell = {"s", "o", "m", "d"};
-        String[] dic = {"moos", "dzx", "smm", "sunmmo", "som"};
+       int price = 150000;
 
-        System.out.println(new Solution().solution(spell, dic));
+        System.out.println(new Solution().solution(price));
 
     }
 
