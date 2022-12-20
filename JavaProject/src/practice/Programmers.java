@@ -1,31 +1,25 @@
 package practice;
 
-
-import java.util.ArrayList;
+import java.util.Arrays;
 
 class Solution {
-    public int[] solution(int n) {
-        int[] answer = {};
+    public int solution(int[] array) {
+        int answer = 0;
+        Arrays.sort(array);
 
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i <= n ; i++) {
-            if(i%2 != 0) {
-                list.add(i);
-            }
-        }
-        answer = list.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        answer = array[array.length/2];
+
         return answer;
     }
 }
+
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int n = 10;
+        int[] array = {1, 2, 7, 10, 11};
 
-        System.out.println(new Solution().solution(n));
+        System.out.println(new Solution().solution(array));
 
     }
 
