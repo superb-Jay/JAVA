@@ -1,30 +1,26 @@
 package practice;
 
-import java.util.Arrays;
 
 class Solution {
-    public int[] solution(int[] numbers, String direction) {
-        int[] answer = new int[numbers.length];
+    public String solution(int age) {
+        String answer = "";
+        //소문자 아스키는 97부터 ,122
+        String[] strArr = String.valueOf(age).split("");
 
-        if(direction.equals("right")) {
-            answer[0] = numbers[numbers.length - 1];
-            System.arraycopy(numbers, 0, answer, 1, numbers.length - 1);
-        } else if (direction.equals("left")) {
-            answer[answer.length-1] = numbers[0];
-            System.arraycopy(numbers, 1, answer, 0, numbers.length - 1);
-            
+        for (int i = 0; i <strArr.length ; i++) {
+            answer += (char)(Integer.parseInt(strArr[i]) + 'a');
         }
         return answer;
     }
 }
 
+
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int[] numbers = {1, 2, 3};
-        String direction = "left";
-        System.out.println(new Solution().solution(numbers,direction));
+        int age = 23;
+        System.out.println(new Solution().solution(age));
 
     }
 
