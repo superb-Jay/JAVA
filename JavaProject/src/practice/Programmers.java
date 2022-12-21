@@ -1,24 +1,18 @@
 package practice;
 
+import java.util.Arrays;
+
 class Solution {
-    public String solution(String rsp) {
-        String answer = "";
-        String[] strArr = rsp.split("");
+    public int[] solution(int[] numbers, String direction) {
+        int[] answer = new int[numbers.length];
 
-        for (int i = 0; i < strArr.length; i++) {
-
-            switch (strArr[i]) {
-
-                case "2":
-                    answer += 0;
-                    break;
-                case "0":
-                    answer += 5;
-                    break;
-                case "5":
-                    answer += 2;
-                    break;
-            }
+        if(direction.equals("right")) {
+            answer[0] = numbers[numbers.length - 1];
+            System.arraycopy(numbers, 0, answer, 1, numbers.length - 1);
+        } else if (direction.equals("left")) {
+            answer[answer.length-1] = numbers[0];
+            System.arraycopy(numbers, 1, answer, 0, numbers.length - 1);
+            
         }
         return answer;
     }
@@ -28,9 +22,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        String rsp = "2";
-
-        System.out.println(new Solution().solution(rsp));
+        int[] numbers = {1, 2, 3};
+        String direction = "left";
+        System.out.println(new Solution().solution(numbers,direction));
 
     }
 
