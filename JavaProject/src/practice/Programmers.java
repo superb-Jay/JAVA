@@ -1,15 +1,18 @@
 package practice;
 
 
+
 class Solution {
-    public int solution(int price) {
+    public int solution(String my_string) {
         int answer = 0;
+        String pattern = "[a-zA-Z]";
 
-        if(price>=500000) return (int)(price*0.8);
-        if(price>=300000) return (int)(price*0.9);
-        if(price>=100000) return (int)(price*0.95);
+        my_string = my_string.replaceAll(pattern,"");
 
-        return price;
+        for (int i = 0; i < my_string.length() ; i++) {
+            answer+=Integer.parseInt(String.valueOf(my_string.charAt(i)));
+        }
+        return answer;
     }
 }
 
@@ -17,9 +20,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-       int price = 150000;
+        String my_string = "aAb1B2cC34oOp";
 
-        System.out.println(new Solution().solution(price));
+        System.out.println(new Solution().solution(my_string));
 
     }
 
