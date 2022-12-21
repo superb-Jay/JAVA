@@ -1,17 +1,25 @@
 package practice;
 
-import java.util.Arrays;
-
 class Solution {
-    public int[] solution(String my_string) {
-        int[] answer = {};
+    public String solution(String rsp) {
+        String answer = "";
+        String[] strArr = rsp.split("");
 
-        String pattern = "[a-zA-z]";
+        for (int i = 0; i < strArr.length; i++) {
 
-        my_string = my_string.replaceAll(pattern,"");
-        String[] strArray = my_string.split("");
-        Arrays.sort(strArray);
-        answer = Arrays.stream(strArray).mapToInt(Integer::valueOf).toArray();
+            switch (strArr[i]) {
+
+                case "2":
+                    answer += 0;
+                    break;
+                case "0":
+                    answer += 5;
+                    break;
+                case "5":
+                    answer += 2;
+                    break;
+            }
+        }
         return answer;
     }
 }
@@ -20,9 +28,9 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        String my_string = "hi12392";
+        String rsp = "2";
 
-        System.out.println(new Solution().solution(my_string));
+        System.out.println(new Solution().solution(rsp));
 
     }
 
