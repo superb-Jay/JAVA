@@ -3,17 +3,12 @@ package practice;
 
 
 class Solution {
-    public int solution(int hp) {
-        int answer = 0;
-        int[] arr = {5,3,1};
-        int remainHp = 0;
+    public int solution(int[] box, int n) {
+        int answer = 1;
 
-        for (int i = 0; i < arr.length ; i++) {
-            answer += hp/arr[i];
-            remainHp = hp%arr[i];
-            hp = remainHp;
+        for (int i = 0; i < box.length ; i++) {
+            answer*= (int) box[i] /n;
         }
-
         return answer;
     }
 }
@@ -22,9 +17,10 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        int hp = 23;
+        int[] box = {10,8,6};
+        int n = 3;
 
-        System.out.println(new Solution().solution(hp));
+        System.out.println(new Solution().solution(box,n));
 
     }
 
