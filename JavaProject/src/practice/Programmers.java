@@ -1,19 +1,23 @@
 package practice;
 
 
-
 class Solution {
     public int solution(int n) {
         int answer = 0;
-        int slacePizza = 6;
+        int count = 0;
 
-        for (int i = 0; i < slacePizza*n ; i++) {
-            if(slacePizza%n == 0) {
-                answer = slacePizza/6;
-                break;
+        for (int i = 4; i <= n ; i++) {
+            for (int j = 1; j <= n ; j++) {
+                if(i%j == 0) {
+                    count++;
+                }
             }
-            slacePizza+=6;
+            if(count>=3) {
+                answer++;
+                count = 0;
+            }
         }
+
         return answer;
     }
 }
