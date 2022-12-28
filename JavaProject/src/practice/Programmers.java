@@ -2,34 +2,41 @@ package practice;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Solution {
-    public int solution(int[] numbers, int k) {
-        int answer = 0;
-        ArrayList<Integer> numberslist = new ArrayList<>(Arrays.asList(Arrays.stream(numbers).boxed().toArray(Integer[]::new)));
+    public int[] solution(int n) {
+        int[] answer = {};
+        int i = 2;
+        ArrayList<Integer> list = new ArrayList<>();
 
-        while (numberslist.size() < k*2) {
-            for (int i = 0; i < numbers.length; i++) {
-                numberslist.add(numbers[i]);
+        while (i<=n) {
+            if(n%i == 0) {
+                list.add(i);
+                n = n / i;
+            }else {
+                i++;
             }
         }
-        System.out.println(numberslist);
+        Collections.sort(list);
+        System.out.println(list);
+        List<Integer> distinctList = list.stream().distinct().collect(Collectors.toList());
+        System.out.println(distinctList);
+        answer = distinctList.stream().mapToInt(Integer::intValue).toArray();
 
-        answer = numberslist.get(k*2-2);
         return answer;
     }
 }
-
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int[] numbers = {1,2,3,4,5,6};
-        int k = 5;
+        int n = 12;
 
 
-        System.out.println(new Solution().solution(numbers,k));
+        System.out.println(new Solution().solution(n));
 
     }
 
