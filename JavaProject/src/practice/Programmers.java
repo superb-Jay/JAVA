@@ -1,21 +1,22 @@
 package practice;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 class Solution {
-    public int solution(String my_string) {
+    public int solution(int[] numbers, int k) {
         int answer = 0;
+        ArrayList<Integer> numberslist = new ArrayList<>(Arrays.asList(Arrays.stream(numbers).boxed().toArray(Integer[]::new)));
 
-        String pattern = "[a-zA-z]";
-
-        String[] strArr = my_string.split(pattern);
-//        System.out.println(Arrays.toString(strArr));
-        for (int i = 0; i < strArr.length; i++) {
-            if (!(strArr[i].equals(""))) {
-                answer += Integer.parseInt(strArr[i]);
+        while (numberslist.size() < k*2) {
+            for (int i = 0; i < numbers.length; i++) {
+                numberslist.add(numbers[i]);
             }
         }
+        System.out.println(numberslist);
+
+        answer = numberslist.get(k*2-2);
         return answer;
     }
 }
@@ -24,10 +25,11 @@ public class Programmers {
 
     public static void main(String[] args) {
 
-        String my_string = "aAb1B2cC34oOp";
+        int[] numbers = {1,2,3,4,5,6};
+        int k = 5;
 
 
-        System.out.println(new Solution().solution(my_string));
+        System.out.println(new Solution().solution(numbers,k));
 
     }
 
