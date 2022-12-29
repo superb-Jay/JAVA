@@ -1,42 +1,32 @@
 package practice;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 class Solution {
-    public int[] solution(int n) {
-        int[] answer = {};
-        int i = 2;
-        ArrayList<Integer> list = new ArrayList<>();
+    public long solution(int balls, int share) {
 
-        while (i<=n) {
-            if(n%i == 0) {
-                list.add(i);
-                n = n / i;
-            }else {
-                i++;
-            }
-        }
-        Collections.sort(list);
-        System.out.println(list);
-        List<Integer> distinctList = list.stream().distinct().collect(Collectors.toList());
-        System.out.println(distinctList);
-        answer = distinctList.stream().mapToInt(Integer::intValue).toArray();
+        share = Math.min(balls - share, share);
 
-        return answer;
+        if (share == 0)
+            return 1L;
+
+        long result = solution(balls - 1, share - 1);
+        result *= balls;
+        result /= share;
+
+        return result;
     }
 }
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int n = 12;
+        int balls = 5;
+        int share = 3;
 
 
-        System.out.println(new Solution().solution(n));
+        System.out.println(new Solution().solution(balls,share));
 
     }
 
