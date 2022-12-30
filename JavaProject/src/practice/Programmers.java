@@ -1,32 +1,55 @@
 package practice;
 
 
-
+import java.util.Arrays;
 
 class Solution {
-    public long solution(int balls, int share) {
+    public int[] solution(String[] keyinput, int[] board) {
+        int[] answer = {0,0};
+        //up y+1, down y-1, left x-1 right x+1
+//      String[] keyinput = {"left", "right", "up", "right", "right"};
+        for (int i = 0; i < keyinput.length ; i++) {
 
-        share = Math.min(balls - share, share);
+            switch (keyinput[i]) {
 
-        if (share == 0)
-            return 1L;
+                case "left":
+                    if (Math.abs(answer[0])<board[0]/2) {
+                        answer[0] -= 1;
+                    }
+                    break;
+                case "right":
+                    if(Math.abs(answer[0])<board[0]/2) {
+                        answer[0] += 1;
+                    }
+                    break;
+                case "up":
+                    if(Math.abs(answer[1])<board[1]/2) {
+                        answer[1] += 1;
+                    }
+                    break;
+                case "down":
+                    if(Math.abs(answer[1])<board[1]/2) {
+                        answer[1] -= 1;
+                    }
+                    break;
+            }
+        }
+        System.out.println(Arrays.toString(answer));
 
-        long result = solution(balls - 1, share - 1);
-        result *= balls;
-        result /= share;
 
-        return result;
+        return answer;
     }
 }
 public class Programmers {
 
     public static void main(String[] args) {
 
-        int balls = 5;
-        int share = 3;
+
+        String[] keyinput = {"left", "left", "left", "right"};
+        int[] board = {3,3};
 
 
-        System.out.println(new Solution().solution(balls,share));
+        System.out.println(new Solution().solution(keyinput,board));
 
     }
 
