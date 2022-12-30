@@ -19,7 +19,6 @@ public class PracticeTest{
                 top++;
                 array[top] = number[i];
             }
-
         }
         System.out.println(Arrays.toString(array));
 
