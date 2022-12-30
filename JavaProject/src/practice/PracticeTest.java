@@ -1,34 +1,32 @@
 package practice;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class PracticeTest<T> {
-
-    private ArrayList<T> stack = new ArrayList<>();
-
-    public void push(T item) {
-        stack.add(item);
-    }
-
-    public T pop() {
-        if(stack.isEmpty()) {
-            return null;
-        }
-        stack.get(stack.size()-1);
-        return stack.remove(stack.size()-1);
-    }
+public class PracticeTest{
     public static void main(String[] args) {
 
-        PracticeTest<Integer> practiceTest = new PracticeTest();
+        int answer = 0;
+        int k = 10;
+        int[] number = {1,3,5,4,0,0,7,0,0,6};
+        int top = -1;
+        int[] array = new int[k];
 
-        practiceTest.push(1);
-        practiceTest.push(2);
-        practiceTest.push(3);
-        System.out.println(practiceTest.pop());
-        System.out.println(practiceTest.pop());
-        System.out.println(practiceTest.pop());
-        System.out.println(practiceTest.pop());
+        for (int i = 0; i < k ; i++) {
+            if(number[i] == 0) {
+                array[top] = 0;
+                top--;
+            }else{
+                top++;
+                array[top] = number[i];
+            }
 
+        }
+        System.out.println(Arrays.toString(array));
+
+        for (int i : array) {
+            answer += i;
+        }
+        System.out.println(answer);
     }
 }
 
