@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 public class PracticeTest<T> {
 
-    private ArrayList<T> queue = new ArrayList<>();
+    private ArrayList<T> stack = new ArrayList<>();
 
-    public void enqueue(T item) {
-        queue.add(item);
+    public void push(T item) {
+        stack.add(item);
     }
 
-    public T dequeue() {
-        if(queue.isEmpty()) {
+    public T pop() {
+        if(stack.isEmpty()) {
             return null;
         }
-        queue.get(0);
-        return queue.remove(0);
+        stack.get(stack.size()-1);
+        return stack.remove(stack.size()-1);
     }
     public static void main(String[] args) {
 
         PracticeTest<Integer> practiceTest = new PracticeTest();
 
-        practiceTest.enqueue(1);
-        practiceTest.enqueue(2);
-        practiceTest.enqueue(3);
-        System.out.println(practiceTest.dequeue());
-        System.out.println(practiceTest.dequeue());
-        System.out.println(practiceTest.dequeue());
-        System.out.println(practiceTest.dequeue());
+        practiceTest.push(1);
+        practiceTest.push(2);
+        practiceTest.push(3);
+        System.out.println(practiceTest.pop());
+        System.out.println(practiceTest.pop());
+        System.out.println(practiceTest.pop());
+        System.out.println(practiceTest.pop());
 
     }
 }
