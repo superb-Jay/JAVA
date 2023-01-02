@@ -1,25 +1,26 @@
 package practice;
 
-import java.util.LinkedList;
+
+import java.util.HashMap;
 
 class Solution {
-    public int solution(String s) {
-        int answer = 0;
+    public String solution(String[] id_pw, String[][] db) {
+        String answer = "";
 
-        String[] strArr = s.split(" ");
-        LinkedList<String> list = new LinkedList<>();
+        HashMap<String,String> map = new HashMap<>();
 
-        for (int i = 0; i < strArr.length ; i++) {
-            if (strArr[i].equals("Z")) {
-                list.pop();
-            }else{
-                list.push(strArr[i]);
-            }
+        for (int i = 0; i < db.length ; i++) {
+            map.put(db[i][0],db[i][1]);
         }
-        System.out.println(list);
 
-        for (String s1 : list) {
-            answer+=Integer.parseInt(s1);
+        for (int i = 0; i < map.size() ; i++) {
+            if(!(map.containsKey(id_pw[0]))) {
+                answer = "fail";
+            } else if (map.containsKey(id_pw[0]) && !(map.get(id_pw[0]).equals(id_pw[1]))) {
+                answer = "wrong pw";
+            } else if (map.containsKey(id_pw[0]) && map.get(id_pw[0]).equals(id_pw[1])) {
+                answer = "login";
+            }
         }
 
         return answer;
@@ -30,9 +31,10 @@ public class Programmers {
     public static void main(String[] args) {
 
 
-        String s = "1 2 Z 3";
+        String[] id_pw = {"rabbit04", "98761"};
+        String[][] db = {{"jaja11", "98761"}, {"krong0313", "29440"}, {"rabbit04", "111333"}};
 
-        System.out.println(new Solution().solution(s));
+        System.out.println(new Solution().solution(id_pw,db));
 
     }
 
