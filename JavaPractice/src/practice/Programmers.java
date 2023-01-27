@@ -2,39 +2,33 @@ package practice;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.List;
 
 class Solution {
-    public int[] solution(int[][] score) {
-        int[] answer = new int[score.length];
+    public int[] solution(int[] numlist, int n) {
 
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < score.length ; i++) {
-            list.add((score[i][0]+score[i][1])/2);
-        }
-        list.sort(Collections.reverseOrder());
-        System.out.println(list);
+        int[] answer = {};
+//        int[] numlist = {1, 2, 3, 4, 5, 6}; // 4,5,3,6,2,1
+//        int n = 4;
 
-        for (int i = 0; i < score.length ; i++) {
-            if(((score[i][0]+score[i][1])/2) == list.get(i) ) {
-                answer[i] = i+1;
-            }
-        }
-        System.out.println(Arrays.toString(answer));
-
+        List<Integer> answerList = new ArrayList<>();
 
         return answer;
     }
+
 }
+
+
+
 public class Programmers {
 
     public static void main(String[] args) {
 
+        int[] numlist = {1, 2, 3, 4, 5, 6}; // 4,5,3,6,2,1
+        int n = 4;
 
-        int[][] score = {{80, 70}, {90, 50}, {40, 70}, {50, 80}};
 
-        System.out.println(new Solution().solution(score));
+        System.out.println(new Solution().solution(numlist,n));
 
     }
 
