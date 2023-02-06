@@ -11,9 +11,7 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String data = br.readLine();
-        int prData = Integer.parseInt(data);
+        int prData = Integer.parseInt(br.readLine());
 
         if((prData%4 == 0 && prData%100 != 0)||prData%400 == 0) {
             sb.append(1);
