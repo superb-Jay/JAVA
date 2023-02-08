@@ -4,32 +4,29 @@ package practice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        int data = Integer.parseInt(br.readLine());
-//        StringBuilder sb = new StringBuilder();
+        String data = br.readLine();
 
-        int T = Integer.parseInt(br.readLine());
-        for (int i = 0; i < T; i++) {
-            int N = Integer.parseInt(br.readLine());
-            int[] arr = new int[N];
-            StringTokenizer st = new StringTokenizer(br.readLine());
-
-            for (int j = 0; j < N ; j++) {
-                arr[j] = Integer.parseInt(st.nextToken());
-            }
-            Arrays.sort(arr);
-
-//            sb.append(arr.get(0) + " ");
-//            sb.append(arr.get(arr.size() - 1));
-//            System.out.println(sb);
-//            sb = new StringBuilder();
-            System.out.println(arr[0] +" "+ arr[N-1]);
+        if(Integer.parseInt(data)<10) {
+            data="0"+data;
         }
+        String answers = data;
+        int count = 0;
+
+        do {
+            String[] datas = data.split("");
+            String sum = String.valueOf(Integer.parseInt(datas[0]) + Integer.parseInt(datas[datas.length - 1]));
+            if(Integer.parseInt(sum) >= 10) {
+                sum = String.valueOf(Integer.parseInt(sum)%10);
+            }
+            data = datas[datas.length - 1] + sum;
+            count++;
+        }
+        while (!(answers.equals(data)));
+        System.out.println(count);
     }
 }
